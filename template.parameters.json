@@ -7,6 +7,12 @@
     },
     "storageSKU": {
       "value": "Standard_LRS"
+    },
+    "resourceTags": {
+      "value": {
+        "Environment": "Dev",
+        "Project": "Learn"
+      }
     }
   }
 }

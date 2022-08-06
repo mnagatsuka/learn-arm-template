@@ -20,17 +20,24 @@
               "Standard_GZRS",
               "Standard_RAGZRS"
           ]
+      },
+      "resourceTags": {
+          "type": "object",
+          "defaultValue": {
+              "Environment": "Dev",
+              "Project": "Tutorial"
+          }
       }
- },
+  },
   "functions": [],
-  "variables": {},
+  "variables": {
+      "uniqueStorageName": "[toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id)))]"
+  },
   "resources": [{
-      "name": "[toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id)))]",
+      "name": "[variables('uniqueStorageName')]",
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2019-06-01",
-      "tags": {
-          "displayName": "[toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id)))]"
-      },
+      "tags": "[parameters('resourceTags')]",
       "location": "[resourceGroup().location]",
       "kind": "StorageV2",
       "sku": {
